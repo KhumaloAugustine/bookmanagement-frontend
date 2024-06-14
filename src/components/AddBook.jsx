@@ -33,6 +33,21 @@ const AddBook = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    // Validation
+    if (!title.trim()) {
+      alert('Please enter a book title.');
+      return;
+    }
+    if (!description.trim()) {
+      alert('Please enter a book description.');
+      return;
+    }
+    if (!authorId) {
+      alert('Please select an author.');
+      return;
+    }
+
     addBook({ variables: { title, description, authorId } });
     setTitle('');
     setDescription('');

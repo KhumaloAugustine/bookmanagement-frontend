@@ -16,6 +16,10 @@ const AddAuthor = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!name.trim()) {
+      alert('Please enter an author name.');
+      return;
+    }
     addAuthor({ variables: { name } });
     setName('');
   };
