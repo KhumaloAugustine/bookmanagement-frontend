@@ -1,14 +1,6 @@
 import React, { useState } from 'react';
 import { useQuery, useMutation, gql } from '@apollo/client';
-
-const GET_AUTHORS = gql`
-  query GetAuthors {
-    findAllAuthors {
-      id
-      name
-    }
-  }
-`;
+import { GET_AUTHORS, GET_BOOKS } from '../graphql'; 
 
 const ADD_BOOK = gql`
   mutation AddBook($title: String!, $description: String!, $authorId: ID!) {
@@ -29,7 +21,9 @@ const AddBook = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [authorId, setAuthorId] = useState('');
-  const [addBook, { data: bookData, loading: bookLoading, error: bookError }] = useMutation(ADD_BOOK);
+  const [addBook, { data: bookData, loading: bookLoading, error: bookError }] = useMutation(ADD_BOOK, {
+    refetchQueries: [{ query: GET_BOOKS }], 
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();

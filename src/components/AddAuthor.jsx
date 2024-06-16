@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useMutation, gql } from '@apollo/client';
+import { GET_AUTHORS } from '../graphql';
 
 const ADD_AUTHOR = gql`
   mutation AddAuthor($name: String!) {
@@ -12,7 +13,9 @@ const ADD_AUTHOR = gql`
 
 const AddAuthor = () => {
   const [name, setName] = useState('');
-  const [addAuthor, { data, loading, error }] = useMutation(ADD_AUTHOR);
+  const [addAuthor, { data, loading, error }] = useMutation(ADD_AUTHOR, {
+    refetchQueries: [{ query: GET_AUTHORS }], 
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
