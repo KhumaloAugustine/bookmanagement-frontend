@@ -1,37 +1,37 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link, NavLink } from 'react-router-dom';
 import Home from './components/Home';
 import Authors from './components/Authors';
 import Books from './components/Books';
 import AddAuthor from './components/AddAuthor';
 import AddBook from './components/AddBook';
-import './App.css';
+import './App.css'; 
 
 const App = () => {
   return (
     <Router>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">Book Management</a>
+          <Link className="navbar-brand" to="/">Book Management</Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarText">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/">Home</Link>
+                <NavLink className="nav-link" activeClassName="active" exact to="/">Home</NavLink>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/add-author">Add Author</Link>
+                <NavLink className="nav-link" activeClassName="active" to="/add-author">Add Author</NavLink>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/add-book">Add Book</Link>
+                <NavLink className="nav-link" activeClassName="active" to="/add-book">Add Book</NavLink>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/authors">Authors</Link>
+                <NavLink className="nav-link" activeClassName="active" to="/authors">Authors</NavLink>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/books">Books</Link>
+                <NavLink className="nav-link" activeClassName="active" to="/books">Books</NavLink>
               </li>
             </ul>
           </div>
