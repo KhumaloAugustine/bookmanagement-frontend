@@ -11,7 +11,7 @@ The backend for this project can be found at Book Management Backend Repository.
 Technologies Used
 Frontend: React.js, Apollo Client, Bootstrap
 Backend: Java Spring Boot, GraphQL
-Database: MySQL, H2 Database (for testing)
+Database: H2 Database (for testing)
 Getting Started
 To get started with this project, follow these steps:
 
@@ -40,10 +40,8 @@ Fork the repository and create your branch from main.
 Make your changes, test thoroughly.
 Ensure your code follows the project's coding style.
 Create a pull request with a clear description of your changes.
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 Contact
-Augustine Khumalo - Email
+Augustine Khumalo - augustine.khumalo96@gmail.com
 
 Project Link: https://github.com/KhumaloAugustine/BookManagement-frontend
