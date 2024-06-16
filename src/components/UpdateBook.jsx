@@ -18,31 +18,50 @@ const UpdateBook = ({ book }) => {
   if (authorsError) return <p>Error loading authors: {authorsError.message}</p>;
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        placeholder="Book Title"
-      />
-      <input
-        type="text"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        placeholder="Book Description"
-      />
-      <select value={authorId} onChange={(e) => setAuthorId(e.target.value)}>
-        {authorsData.findAllAuthors.map((author) => (
-          <option key={author.id} value={author.id}>
-            {author.name}
-          </option>
-        ))}
-      </select>
-      <button type="submit" disabled={loading}>
-        {loading ? 'Updating...' : 'Update'}
-      </button>
-      {error && <p>Error: {error.message}</p>}
-    </form>
+    <div className="container mt-4">
+      <h3>Update Book</h3>
+      <form onSubmit={handleSubmit}>
+        <div className="mb-3">
+          <label htmlFor="title" className="form-label">Title</label>
+          <input
+            type="text"
+            className="form-control"
+            id="title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="Enter book title"
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="description" className="form-label">Description</label>
+          <textarea
+            className="form-control"
+            id="description"
+            rows="3"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            placeholder="Enter book description"
+          ></textarea>
+        </div>
+        <div className="mb-3">
+          <label htmlFor="author" className="form-label">Author</label>
+          <select
+            className="form-select"
+            id="author"
+            value={authorId}
+            onChange={(e) => setAuthorId(e.target.value)}
+          >
+            {authorsData.findAllAuthors.map((author) => (
+              <option key={author.id} value={author.id}>{author.name}</option>
+            ))}
+          </select>
+        </div>
+        <button type="submit" className="btn btn-primary" disabled={loading}>
+          {loading ? 'Updating...' : 'Update'}
+        </button>
+        {error && <p className="mt-2 text-danger">Error: {error.message}</p>}
+      </form>
+    </div>
   );
 };
 

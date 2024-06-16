@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useQuery } from '@apollo/client';
-import { GET_BOOKS } from '../graphql'; // Adjust the path if necessary
+import { GET_BOOKS } from '../graphql';
 import DeleteBook from './DeleteBook';
 import UpdateBook from './UpdateBook';
 
@@ -8,30 +8,43 @@ const Books = () => {
   const { loading, error, data } = useQuery(GET_BOOKS);
   const [selectedBook, setSelectedBook] = useState(null);
 
+  const handleUpdateClick = (book) => {
+    setSelectedBook(book);
+  };
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <div>
-      <h2>Books</h2>
-      <ul>
+    <div className="container mt-4">
+      <h2 className="mb-4">Books</h2>
+      <div className="row row-cols-1 row-cols-md-3 g-4">
         {data.findAllBooks.map((book) => (
-          <li key={book.id}>
-            <h3>{book.title}</h3>
-            <p>{book.description}</p>
-            <p>Author: {book.author.name}</p>
-            <button onClick={() => setSelectedBook(book)}>Update</button>
-            <DeleteBook bookId={book.id} />
-          </li>
+          <div key={book.id} className="col">
+            <div className="card h-100">
+              <div className="card-body">
+                <h5 className="card-title">{book.title}</h5>
+                <h6 className="card-subtitle mb-2 text-muted">Author: {book.author.name}</h6>
+                <p className="card-text">{book.description}</p>
+                <div className="d-flex justify-content-between align-items-center">
+                  <button className="btn btn-outline-primary" onClick={() => handleUpdateClick(book)}>
+                    Update
+                  </button>
+                  <DeleteBook bookId={book.id} />
+                </div>
+              </div>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
+      <p className="mt-4">Total Books: {data.countBooks}</p>
+
       {selectedBook && (
-        <div>
+        <div className="mt-4">
           <h3>Update Book</h3>
           <UpdateBook book={selectedBook} />
         </div>
       )}
-      <p>Total Books: {data.countBooks}</p>
     </div>
   );
 };

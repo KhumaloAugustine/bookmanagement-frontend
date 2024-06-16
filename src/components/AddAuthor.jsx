@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useMutation, gql } from '@apollo/client';
-import { GET_AUTHORS } from '../graphql';
 
 const ADD_AUTHOR = gql`
   mutation AddAuthor($name: String!) {
@@ -13,9 +12,7 @@ const ADD_AUTHOR = gql`
 
 const AddAuthor = () => {
   const [name, setName] = useState('');
-  const [addAuthor, { data, loading, error }] = useMutation(ADD_AUTHOR, {
-    refetchQueries: [{ query: GET_AUTHORS }], 
-  });
+  const [addAuthor, { data, loading, error }] = useMutation(ADD_AUTHOR);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,20 +25,25 @@ const AddAuthor = () => {
   };
 
   return (
-    <div>
+    <div className="container mt-4">
       <h2>Add Author</h2>
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Author Name"
-        />
-        <button type="submit">Add</button>
+        <div className="mb-3">
+          <label htmlFor="authorName" className="form-label">Author Name</label>
+          <input
+            type="text"
+            id="authorName"
+            className="form-control"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Enter author name"
+          />
+        </div>
+        <button type="submit" className="btn btn-primary">Add</button>
       </form>
-      {loading && <p>Loading...</p>}
-      {error && <p>Error: {error.message}</p>}
-      {data && <p>Author added: {data.newAuthor.name}</p>}
+      {loading && <p className="mt-3">Loading...</p>}
+      {error && <p className="mt-3 text-danger">Error: {error.message}</p>}
+      {data && <p className="mt-3 text-success">Author added: {data.newAuthor.name}</p>}
     </div>
   );
 };
