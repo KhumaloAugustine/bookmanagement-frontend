@@ -13,8 +13,7 @@ const Home = () => {
             <Link to="/books" className="btn btn-primary">Explore Books</Link>
           </div>
           <div className="col-lg-6">
-            {/* Optional: Add an image related to books */}
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnDjD5KiTN7kvesAbFvHcXWkNt2RTCC_IIxiyB3TsF0hYyXL5n1jAJBOBsHg&s" alt="Books" className="img-fluid" />
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQse-umsrX9k0KgkbsTDgDcga-7zUjTLkc3ww&s" alt="Books" className="img-fluid" />
           </div>
         </div>
       </div>
