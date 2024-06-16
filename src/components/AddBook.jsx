@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useQuery, useMutation, gql } from '@apollo/client';
-import { GET_AUTHORS, GET_BOOKS } from '../graphql'; 
+import { GET_AUTHORS, GET_BOOKS } from '../graphql';
+import { Modal, Button } from 'react-bootstrap';
 
 const ADD_BOOK = gql`
   mutation AddBook($title: String!, $description: String!, $authorId: ID!) {
@@ -21,14 +22,20 @@ const AddBook = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [authorId, setAuthorId] = useState('');
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [addBook, { data: bookData, loading: bookLoading, error: bookError }] = useMutation(ADD_BOOK, {
-    refetchQueries: [{ query: GET_BOOKS }]
+    refetchQueries: [{ query: GET_BOOKS }],
+    onError: (error) => {
+      console.error('Error adding book:', error.message);
+    },
+    onCompleted: () => {
+      setShowSuccessModal(true);
+    }
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Validation
     if (!title.trim()) {
       alert('Please enter a book title.');
       return;
@@ -46,6 +53,10 @@ const AddBook = () => {
     setTitle('');
     setDescription('');
     setAuthorId('');
+  };
+
+  const handleCloseSuccessModal = () => {
+    setShowSuccessModal(false);
   };
 
   if (authorsLoading) return <p>Loading authors...</p>;
@@ -93,6 +104,19 @@ const AddBook = () => {
         </div>
         <button type="submit" className="btn btn-primary">Add</button>
       </form>
+
+      <Modal show={showSuccessModal} onHide={handleCloseSuccessModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Success!</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Book successfully added!</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseSuccessModal}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
       {bookLoading && <p className="mt-3">Loading...</p>}
       {bookError && <p className="mt-3 text-danger">Error: {bookError.message}</p>}
       {bookData && <p className="mt-3 text-success">Book added: {bookData.newBook.title}</p>}

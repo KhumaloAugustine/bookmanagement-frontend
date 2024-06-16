@@ -119,4 +119,60 @@ html, body, #root {
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
   }
+  .hero {
+    padding: 4rem 0;
+    background-color: #f8f9fa;
+    text-align: center;
+  }
+  
+  .features {
+    padding: 4rem 0;
+    background-color: #ffffff;
+    text-align: center;
+  }
+  
+  .features .feature {
+    margin-bottom: 2rem;
+  }
+  
+  .testimonials {
+    padding: 4rem 0;
+    background-color: #f8f9fa;
+    text-align: center;
+  }
+  
+  .testimonials .testimonial {
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .footer {
+    padding: 2rem 0;
+    background-color: #343a40;
+    color: #ffffff;
+    text-align: center;
+  }
+  
+  .footer-links {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .footer-links li {
+    display: inline-block;
+    margin-right: 1rem;
+  }
+  
+  .footer-links li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .footer-links li a:hover {
+    color: #61dafb;
+  }
+  
 }
