@@ -1,8 +1,49 @@
-# React + Vite
+Book Management System
+Welcome to the Book Management System repository! This project provides a web application for managing books and authors.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Features
+Manage Books: Add, update, and delete books with ease.
+Explore Authors: Browse through a collection of authors and their works.
+User-Friendly Interface: Clean and intuitive design for efficient management.
+Backend Repository
+The backend for this project can be found at Book Management Backend Repository. Ensure the backend is set up and running before using this frontend application.
 
-Currently, two official plugins are available:
+Technologies Used
+Frontend: React.js, Apollo Client, Bootstrap
+Backend: Java Spring Boot, GraphQL
+Database: MySQL, H2 Database (for testing)
+Getting Started
+To get started with this project, follow these steps:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Clone the repository:
+
+bash
+Copy code
+git clone https://github.com/KhumaloAugustine/BookManagement-frontend.git
+cd BookManagement-frontend
+Install dependencies:
+
+Copy code
+npm install
+Start the development server:
+
+sql
+Copy code
+npm start
+Access the application:
+Open http://localhost:3000 in your browser.
+
+Contributing
+Contributions are welcome! If you'd like to contribute to this project, please follow these guidelines:
+
+Fork the repository and create your branch from main.
+Make your changes, test thoroughly.
+Ensure your code follows the project's coding style.
+Create a pull request with a clear description of your changes.
+License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+Contact
+Augustine Khumalo - Email
+
+Project Link: https://github.com/KhumaloAugustine/BookManagement-frontend
