@@ -1,3 +1,6 @@
+/* App.css */
+
+/* Root Container */
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -5,19 +8,75 @@
   text-align: center;
 }
 
+/* Navbar Styles */
+.navbar {
+  background-color: #343a40 !important; /* Dark background */
+}
+
+.navbar-brand,
+.nav-link {
+  color: #f8f9fa !important; /* Light text */
+}
+
+.nav-link.active {
+  color: #ffc107 !important; /* Highlighted active link */
+}
+
+.nav-link:hover {
+  color: #adb5bd !important; /* Light gray on hover */
+}
+
+/* Container Styles */
+.container {
+  margin-top: 20px;
+}
+
+/* Additional Styles for Buttons, Forms, etc. */
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #004085;
+}
+
+.form-control {
+  border: 1px solid #ced4da;
+}
+
+/* Card Styles */
+.card {
+  padding: 2em;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 1rem 0;
+}
+
+/* Read the Docs Styles */
+.read-the-docs {
+  color: #888;
+}
+
+/* Logo Styles */
 .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+/* Animation for Logo */
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
@@ -27,16 +86,20 @@
   }
 }
 
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .navbar-brand,
+  .nav-link {
+    font-size: 1rem;
+  }
+
+  .container {
+    padding: 1rem;
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
