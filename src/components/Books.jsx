@@ -5,11 +5,19 @@ import DeleteBook from './DeleteBook';
 import UpdateBook from './UpdateBook';
 
 const Books = () => {
-  const { loading, error, data } = useQuery(GET_BOOKS);
+  const { loading, error, data, refetch } = useQuery(GET_BOOKS);
   const [selectedBook, setSelectedBook] = useState(null);
+  const [showUpdateForm, setShowUpdateForm] = useState(false);
 
   const handleUpdateClick = (book) => {
     setSelectedBook(book);
+    setShowUpdateForm(true);
+  };
+
+  const handleUpdateComplete = () => {
+    refetch(); 
+    setShowUpdateForm(false); 
+    setSelectedBook(null);
   };
 
   if (loading) return <p>Loading...</p>;
@@ -39,10 +47,10 @@ const Books = () => {
       </div>
       <p className="mt-4">Total Books: {data.countBooks}</p>
 
-      {selectedBook && (
+      {showUpdateForm && selectedBook && (
         <div className="mt-4">
           <h3>Update Book</h3>
-          <UpdateBook book={selectedBook} />
+          <UpdateBook book={selectedBook} onUpdateComplete={handleUpdateComplete} />
         </div>
       )}
     </div>

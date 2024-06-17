@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
 import { GET_AUTHORS, UPDATE_BOOK } from '../graphql';
 
-const UpdateBook = ({ book }) => {
+const UpdateBook = ({ book, onUpdateComplete }) => {
   const { loading: authorsLoading, error: authorsError, data: authorsData } = useQuery(GET_AUTHORS);
-  const [updateBook, { loading, error }] = useMutation(UPDATE_BOOK);
+  const [updateBook, { loading, error }] = useMutation(UPDATE_BOOK, {
+    onCompleted: () => onUpdateComplete()
+  });
   const [title, setTitle] = useState(book.title);
   const [description, setDescription] = useState(book.description);
   const [authorId, setAuthorId] = useState(book.author.id);
